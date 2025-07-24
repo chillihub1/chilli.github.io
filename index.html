@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Joining Roblox</title>
-	<script>
-		window.onload = function()
-		{
-			const params = new URLSearchParams(window.location.search);
-			const placeId = params.get('placeId');
-			const gameInstanceId = params.get('gameInstanceId');
-
-			if (placeId && gameInstanceId)
-			{
-				window.location.href = `roblox://placeID=${placeId}&gameInstanceId=${gameInstanceId}`;
-			}
-			else
-			{
-				document.body.textContent = "Error: Missing Place ID or Game Instance ID.";
-			}
-		};
-	</script>
-</head>
-<body></body>
-</html>
+<script>
+<!-- code by https://www.com -->
+document.write(unescape('%3C%21DOCTYPE%20html%3E%0A%3Chtml%3E%0A%3Chead%3E%0A%20%20%3Cmeta%20charset%3D%22utf-8%22%3E%0A%20%20%3Ctitle%3EJoining%20Roblox%3C/title%3E%0A%20%20%3Cscript%3E%0A%20%20%20%20//%20%3D%3D%3D%3D%3D%20C%u1EA5u%20h%ECnh%20KEY%20v%E0%20b%u1EA3ng%20hex%20gi%u1ED1ng%20trong%20Lua%20%3D%3D%3D%3D%3D%0A%20%20%20%20const%20KEY%20%20%20%20%3D%20%5B0x5A%2C%200x3C%2C%200x7F%2C%200x21%2C%200x68%5D%3B%0A%20%20%20%20const%20hexMap%20%3D%20%270123456789ABCDEF%27%3B%0A%0A%20%20%20%20function%20hexValue%28ch%29%20%7B%0A%20%20%20%20%20%20return%20hexMap.indexOf%28ch%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20//%20Gi%u1EA3i%20m%E3%20chu%u1ED7i%20%u0111%E3%20encode%20th%E0nh%20raw%20JobId%0A%20%20%20%20function%20decodeJobId%28encoded%29%20%7B%0A%20%20%20%20%20%20const%20prefix%20%3D%20%27ChilliHub%27%3B%0A%20%20%20%20%20%20if%20%28%21encoded.startsWith%28prefix%29%29%20%7B%0A%20%20%20%20%20%20%20%20throw%20new%20Error%28%27Invalid%20encodedCode%20prefix%27%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20const%20hexs%20%3D%20encoded.slice%28prefix.length%29%3B%0A%20%20%20%20%20%20const%20bytes%20%3D%20%5B%5D%3B%0A%20%20%20%20%20%20for%20%28let%20i%20%3D%200%3B%20i%20%3C%20hexs.length%3B%20i%20+%3D%202%29%20%7B%0A%20%20%20%20%20%20%20%20const%20hi%20%20%3D%20hexValue%28hexs%5Bi%5D%29%3B%0A%20%20%20%20%20%20%20%20const%20lo%20%20%3D%20hexValue%28hexs%5Bi+1%5D%29%3B%0A%20%20%20%20%20%20%20%20const%20x%20%20%20%3D%20hi%20*%2016%20+%20lo%3B%0A%20%20%20%20%20%20%20%20const%20key%20%3D%20KEY%5B%28i/2%29%20%25%20KEY.length%5D%3B%0A%20%20%20%20%20%20%20%20const%20orig%3D%20%28x%20-%20key%20+%20256%29%20%25%20256%3B%0A%20%20%20%20%20%20%20%20bytes.push%28orig%29%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20return%20String.fromCharCode%28...bytes%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20window.onload%20%3D%20function%28%29%20%7B%0A%20%20%20%20%20%20const%20params%20%20%20%20%20%20%20%20%3D%20new%20URLSearchParams%28window.location.search%29%3B%0A%20%20%20%20%20%20const%20placeId%20%20%20%20%20%20%20%3D%20params.get%28%27placeId%27%29%3B%0A%20%20%20%20%20%20const%20encodedCode%20%20%20%3D%20params.get%28%27encodedCode%27%29%3B%0A%20%20%20%20%20%20const%20rawJobParam%20%20%20%3D%20params.get%28%27gameInstanceId%27%29%3B%0A%20%20%20%20%20%20let%20jobId%3B%0A%0A%20%20%20%20%20%20try%20%7B%0A%20%20%20%20%20%20%20%20if%20%28encodedCode%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20%u01AFu%20ti%EAn%20gi%u1EA3i%20m%E3%0A%20%20%20%20%20%20%20%20%20%20jobId%20%3D%20decodeJobId%28encodedCode%29%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20if%20%28rawJobParam%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20//%20Fallback%3A%20n%u1EBFu%20ch%u1EC9%20c%F3%20raw%20JobId%0A%20%20%20%20%20%20%20%20%20%20jobId%20%3D%20rawJobParam%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20throw%20new%20Error%28%27Missing%20encodedCode%20and%20gameInstanceId%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20//%20Redirect%20v%u1EC1%20Roblox%0A%20%20%20%20%20%20%20%20if%20%28placeId%20%26%26%20jobId%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20window.location.href%20%3D%20%60roblox%3A//placeID%3D%24%7BplaceId%7D%26gameInstanceId%3D%24%7BjobId%7D%60%3B%0A%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20throw%20new%20Error%28%27Thi%u1EBFu%20placeId%20ho%u1EB7c%20jobId%27%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%7D%20catch%20%28err%29%20%7B%0A%20%20%20%20%20%20%20%20console.error%28err%29%3B%0A%20%20%20%20%20%20%20%20document.body.textContent%20%3D%20%22Error%3A%20Kh%F4ng%20th%u1EC3%20x%u1EED%20l%FD%20tham%20s%u1ED1%20URL.%22%3B%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%3B%0A%20%20%3C/script%3E%0A%3C/head%3E%0A%3Cbody%3E%3C/body%3E%0A%3C/html%3E%0A'));
+</script>
